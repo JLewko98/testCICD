@@ -1,0 +1,29 @@
+name: HTML Hello World CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create Hello World HTML file
+        run: |
+          echo "<!DOCTYPE html>
+          <html>
+          <head>
+            <title>Hello World</title>
+          </head>
+          <body>
+            <h1>Hello, World!</h1>
+          </body>
+          </html>" > hello.html
+
+      - name: Display HTML file content
+        run: cat hello.html
